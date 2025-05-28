@@ -20,7 +20,7 @@ onMounted(() => {
   const option = {
     backgroundColor: '#1d1d1d',
     title: {
-      text: 'Packet Fixer in Modpacks',
+      text: 'Modpack with Packet Fixer',
       left: 'center'
     },
     tooltip: {
