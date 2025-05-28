@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@nuxt/icon'],
   icon: {
     serverBundle: {
-      collections: ['uil', 'mdi']
+      collections: ['uil']
     }
   }
 })
