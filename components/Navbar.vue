@@ -7,7 +7,7 @@
       <ul class="flex space-x-8">
         <li><NuxtLink to="/" class="hover:text-gray-400">Inicio</NuxtLink></li>
         <li>
-          <NuxtLink to="https://github.com/" target="_blank" external class="hover:text-gray-400">
+          <NuxtLink to="https://github.com/TonimatasDEV/MyStats" target="_blank" external class="hover:text-gray-400">
             <Icon name="uil:github" style="color: white" size="25px"/>
           </NuxtLink>
         </li>
