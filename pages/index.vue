@@ -3,6 +3,6 @@
 
   <div class="mt-8">
     <PacketFixerGraph/>
-    <DownloadGraph/>
+    <DownloadGraphs/>
   </div>
 </template>

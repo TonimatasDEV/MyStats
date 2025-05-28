@@ -1,7 +1,3 @@
-<template>
-  <div ref="chart" style="width: 100%; height: 400px;"></div>
-</template>
-
 <script setup>
 import * as echarts from 'echarts'
 import { onMounted, ref, onBeforeUnmount } from 'vue'
@@ -9,12 +5,27 @@ import { onMounted, ref, onBeforeUnmount } from 'vue'
 const chart = ref(null)
 let instance = null
 
-const { data: packetFixerData } = await useFetch('https://www.modpackindex.com/api/v1/mod/39585')
-const packetFixerDownloads = packetFixerData.value?.data?.download_count || 0
-const { data: mekanismCuriosData } = await useFetch('https://www.modpackindex.com/api/v1/mod/77177')
-const mekanismCuriosDownloads = mekanismCuriosData.value?.data?.download_count || 0
-const { data: timeStackerData } = await useFetch('https://www.modpackindex.com/api/v1/mod/40663')
-const timeStackerDownloads = timeStackerData.value?.data?.download_count || 0
+defineProps({
+  projects: {
+    type: Array,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  }
+})
+
+const projects = toRaw(__props.projects)
+
+const names = []
+const values = []
+
+for (let i = 0; i < projects.length; i++) {
+  names.push(projects[i].name)
+  const { data: projectData } = await useFetch(projects[i].url)
+  values.push(projects[i].extract(projectData) || 0)
+}
 
 onMounted(() => {
   instance = echarts.init(chart.value, 'dark')
@@ -22,7 +33,7 @@ onMounted(() => {
   const option = {
     backgroundColor: '#1d1d1d',
     title: {
-      text: 'Downloads',
+      text: __props.title,
       left: 'center'
     },
     tooltip: {},
@@ -31,14 +42,14 @@ onMounted(() => {
     },
     yAxis: {
       type: 'category',
-      data: ['Packet Fixer', 'Mekanism Curios', 'Time Stacker'],
+      data: names,
       inverse: true,
     },
     series: [
       {
         realtimeSort: true,
         type: 'bar',
-        data: [packetFixerDownloads, mekanismCuriosDownloads, timeStackerDownloads],
+        data: values,
         label: {
           show: true,
           position: 'right',
@@ -63,3 +74,6 @@ onBeforeUnmount(() => {
   })
 })
 </script>
+<template>
+  <div ref="chart" style="width: 100%; height: 400px;"></div>
+</template>
