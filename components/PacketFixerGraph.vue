@@ -1,7 +1,3 @@
-<template>
-  <div ref="chart" style="width: 100%; height: 400px;"></div>
-</template>
-
 <script setup>
 import * as echarts from 'echarts'
 import { onMounted, ref, onBeforeUnmount } from 'vue'
@@ -60,3 +56,6 @@ onBeforeUnmount(() => {
   })
 })
 </script>
+<template>
+  <div ref="chart" style="width: 100%; height: 400px;"></div>
+</template>
