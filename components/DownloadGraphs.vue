@@ -2,33 +2,48 @@
 const projectsCurseForge = [
   {
     name: 'Packet Fixer',
-    url: 'https://www.modpackindex.com/api/v1/mod/39585',
-    extract: data => data?.value?.data?.download_count
+    url: 'https://api.cfwidget.com/689467',
+    extract: data => data?.value?.downloads?.total
   },
   {
     name: 'Mekanism Curios',
-    url: 'https://www.modpackindex.com/api/v1/mod/77177',
-    extract: data => data?.value?.data?.download_count
+    url: 'https://api.cfwidget.com/1251061',
+    extract: data => data?.value?.downloads?.total
   },
   {
     name: 'Time Stacker',
-    url: 'https://www.modpackindex.com/api/v1/mod/40663',
-    extract: data => data?.value?.data?.download_count
+    url: 'https://api.cfwidget.com/721265',
+    extract: data => data?.value?.downloads?.total
   },
   {
     name: 'KrystalCraft',
-    url: 'https://www.modpackindex.com/api/v1/mod/31992',
-    extract: data => data?.value?.data?.download_count
+    url: 'https://api.cfwidget.com/560953',
+    extract: data => data?.value?.downloads?.total
   },
   {
     name: 'MythLib',
-    url: 'https://www.modpackindex.com/api/v1/mod/31992',
-    extract: data => data?.value?.data?.download_count
+    url: 'https://api.cfwidget.com/925896',
+    extract: data => data?.value?.downloads?.total
   },
   {
     name: 'ForgeFPS',
-    url: 'https://www.modpackindex.com/api/v1/modpack/64705',
-    extract: data => data?.value?.data?.download_count
+    url: 'https://api.cfwidget.com/882710',
+    extract: data => data?.value?.downloads?.total
+  },
+  {
+    name: 'PerWorldPlugins',
+    url: 'https://api.cfwidget.com/526546',
+    extract: data => data?.value?.downloads?.total
+  },
+  {
+    name: 'InstaKillMobs',
+    url: 'https://api.cfwidget.com/526948',
+    extract: data => data?.value?.downloads?.total
+  },
+  {
+    name: 'PerWorldCommands',
+    url: 'https://api.cfwidget.com/539286',
+    extract: data => data?.value?.downloads?.total
   }
 ]
 
