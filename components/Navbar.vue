@@ -11,9 +11,6 @@
             <Icon name="uil:github" style="color: white" size="25px"/>
           </NuxtLink>
         </li>
-        <!--
-        <li><NuxtLink to="/contact" class="hover:text-gray-400">Contacto</NuxtLink></li>
-        -->
       </ul>
     </div>
   </nav>
