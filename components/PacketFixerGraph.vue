@@ -2,15 +2,15 @@
 import * as echarts from 'echarts'
 import { onMounted, ref, onBeforeUnmount } from 'vue'
 
-const { data } = await useFetch('https://www.modpackindex.com/api/v1/modpacks?limit=1&page=1')
-const total = data.value?.meta?.total || 0
-const { data: dataPacketFixer } = await useFetch('https://www.modpackindex.com/api/v1/mod/39585/modpacks?limit=3&page=1')
-const packetFixer = dataPacketFixer.value?.meta?.total || 0
-
 const chart = ref(null)
 let instance = null
 
-onMounted(() => {
+onMounted(async () => {
+  const response = await fetch("/api/packetfixer")
+  const data = await response.json()
+  const total = data?.total
+  const packetFixer = data?.packetFixer
+
   instance = echarts.init(chart.value, 'dark')
 
   const option = {

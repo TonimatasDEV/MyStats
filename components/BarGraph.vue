@@ -6,8 +6,8 @@ const chart = ref(null)
 let instance = null
 
 defineProps({
-  projects: {
-    type: Array,
+  api: {
+    type: String,
     required: true,
   },
   title: {
@@ -16,18 +16,12 @@ defineProps({
   }
 })
 
-const projects = toRaw(__props.projects)
+onMounted(async () => {
+  const response = await fetch("/api/" + __props.api)
+  const data = await response.json()
+  const names = data?.names || []
+  const values = data?.values || []
 
-const names = []
-const values = []
-
-for (let i = 0; i < projects.length; i++) {
-  names.push(projects[i].name)
-  const { data: projectData } = await useFetch(projects[i].url)
-  values.push(projects[i].extract(projectData) || 0)
-}
-
-onMounted(() => {
   instance = echarts.init(chart.value, 'dark')
 
   const option = {
@@ -61,7 +55,6 @@ onMounted(() => {
 
   instance.setOption(option)
 
-  // Para que el gráfico se adapte al tamaño
   window.addEventListener('resize', () => {
     instance && instance.resize()
   })
