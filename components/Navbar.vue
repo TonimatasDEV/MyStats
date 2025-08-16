@@ -5,7 +5,7 @@
         <NuxtLink to="/">My project stats</NuxtLink>
       </div>
       <ul class="flex space-x-8">
-        <li><NuxtLink to="/" class="hover:text-gray-400">Inicio</NuxtLink></li>
+        <li><NuxtLink to="/" class="hover:text-gray-400">Home</NuxtLink></li>
         <li>
           <NuxtLink to="https://github.com/TonimatasDEV/MyStats" target="_blank" external class="hover:text-gray-400">
             <Icon name="uil:github" style="color: white" size="25px"/>
