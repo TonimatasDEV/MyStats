@@ -3,6 +3,7 @@ import * as echarts from 'echarts'
 import { onMounted, ref, onBeforeUnmount } from 'vue'
 
 const chart = ref(null)
+const isLoading = ref(true)
 let instance = null
 
 defineProps({
@@ -54,6 +55,7 @@ onMounted(async () => {
   }
 
   instance.setOption(option)
+  isLoading.value = false
 
   window.addEventListener('resize', () => {
     instance && instance.resize()
@@ -68,5 +70,11 @@ onBeforeUnmount(() => {
 })
 </script>
 <template>
-  <div ref="chart" style="width: 100%; height: 400px;"></div>
+  <div class="flex flex-col items-center justify-center w-full h-[400px] relative">
+    <div v-if="isLoading" class="absolute inset-0 flex items-center justify-center">
+      <h1 class="text-white text-lg">Loading...</h1>
+    </div>
+
+    <div ref="chart" class="w-full h-[400px] z-0" />
+  </div>
 </template>
